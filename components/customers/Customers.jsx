@@ -49,7 +49,7 @@ export default function Customers() {
   };
 
   return (
-    <div className="container mx-auto my-20">
+    <div className="container mx-auto mb-20 mt-12">
       <Title className="text-[40px] text-center">What Says Our Customers</Title>
       <Slider {...settings}>
         <CustomerItem src="/images/client1.jpg" />
