@@ -57,7 +57,7 @@ export default function Search({ setIsShowSearchModal }) {
               className="absolute  top-4 right-4"
               onClick={() => setIsShowSearchModal(false)}
             >
-              <GiCancel size={25} className=" transition-all" />
+              <GiCancel size={25} className="transition-all" />
             </button>
           </div>
         </div>

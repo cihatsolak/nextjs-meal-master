@@ -6,7 +6,7 @@ import { GiHamburgerMenu, GiCancel } from "react-icons/gi";
 import { useRouter } from "next/router";
 
 export default function Header() {
-  const [isShowSearchModal, setIsShowSearchModal] = useState(true);
+  const [isShowSearchModal, setIsShowSearchModal] = useState(false);
   const [isShowMenuModal, setIsShowMenuModal] = useState(false);
 
   const router = useRouter();
