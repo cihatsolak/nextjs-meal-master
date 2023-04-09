@@ -49,14 +49,14 @@ export default function Header() {
           )}
         </nav>
         <div className="flex gap-x-4 items-center">
+          <Link href="/auth/login">
+            <FaUserAlt className="hover:text-primary transition-all cursor-pointer" />
+          </Link>
           <a href="#">
-            <FaUserAlt className="hover:text-primary transition-all" />
-          </a>
-          <a href="#">
-            <FaShoppingCart className="hover:text-primary transition-all" />
+            <FaShoppingCart className="hover:text-primary transition-all cursor-pointer" />
           </a>
           <button onClick={() => setIsShowSearchModal(!isShowSearchModal)}>
-            <FaSearch className="hover:text-primary transition-all" />
+            <FaSearch className="hover:text-primary transition-all cursor-pointer" />
           </button>
           <a href="#" className="md:inline-block hidden sm">
             <button className="btn-primary">Order Online</button>

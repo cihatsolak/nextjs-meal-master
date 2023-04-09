@@ -7,7 +7,6 @@ import Reservation from "@/components/Reservation";
 import Customers from "@/components/customers/Customers";
 
 export default function Index() {
-  console.log('Index');
   return (
     <>
       <Carousel />
