@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Header from "@/components/layout/Header";
 import Home from "@/pages/Home";
-import Input from "@/components/form/Input";
 
 export default function Index() {
   return (

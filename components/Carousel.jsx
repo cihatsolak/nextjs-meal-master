@@ -29,7 +29,7 @@ export default function Carousel() {
           <Image
             src="/images/hero-bg.jpg"
             alt=""
-            layout="fill"
+            fill
             objectFit="cover"
           />
         </div>
