@@ -5,7 +5,7 @@ export default function MenuWrapper() {
   return (
     <div className="container mx-auto  mb-16">
       <div className="flex flex-col items-center w-full">
-        <Title addClass="text-[40px]">Our Menu</Title>
+        <Title className="text-[40px]">Our Menu</Title>
         <div className="mt-10">
           <button className="px-6 py-2 bg-secondary rounded-3xl text-white">
             All
