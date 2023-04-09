@@ -51,14 +51,12 @@ export default function Customers() {
   return (
     <div className="container mx-auto my-20">
       <Title className="text-[40px] text-center">What Says Our Customers</Title>
-      <div className="flex gap-x-10">
-        <Slider {...settings}>
-          <CustomerItem src="/images/client1.jpg" />
-          <CustomerItem src="/images/client2.jpg" />
-          <CustomerItem src="/images/client1.jpg" />
-          <CustomerItem src="/images/client2.jpg" />
-        </Slider>
-      </div>
+      <Slider {...settings}>
+        <CustomerItem src="/images/client1.jpg" />
+        <CustomerItem src="/images/client2.jpg" />
+        <CustomerItem src="/images/client1.jpg" />
+        <CustomerItem src="/images/client2.jpg" />
+      </Slider>
     </div>
   );
 }

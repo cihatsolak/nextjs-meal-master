@@ -9,7 +9,7 @@ export default function Index() {
         <Image src="/images/hamburger.jpg" alt="" fill contain />
       </div>
       <div className="md:flex-1 md:text-start text-center">
-        <Title addClass="text-6xl">Good Pizza</Title>
+        <Title className="text-6xl">Good Pizza</Title>
         <span className="text-primary text-2xl font-bold underline underline-offset-1 my-4 inline-block">
           $10
         </span>
