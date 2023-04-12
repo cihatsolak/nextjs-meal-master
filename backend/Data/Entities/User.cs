@@ -1,4 +1,4 @@
-﻿namespace MealMaster.Infrastructure.Data.Entities
+﻿namespace MealMaster.Data.Entities
 {
     public class User
     {
@@ -23,7 +23,7 @@
 
         [BsonRepresentation(BsonType.String)]
         public string Bio { get; set; }
-        
+
         [BsonRepresentation(BsonType.String)]
         public string Password { get; set; }
 
@@ -31,7 +31,7 @@
         public string ConfirmPassword { get; set; }
 
         [BsonRepresentation(BsonType.Boolean)]
-        public string IsEmailVerified { get; set; }
+        public bool IsEmailVerified { get; set; }
 
         [BsonRepresentation(BsonType.DateTime)]
         public DateTime CreatedDate { get; set; }

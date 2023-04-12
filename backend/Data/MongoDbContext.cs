@@ -1,13 +1,13 @@
-﻿namespace MealMaster.Infrastructure.Data;
+﻿namespace MealMaster.Data;
 
 public class MongoDbContext
 {
     private readonly IMongoDatabase _mongoDatabase;
 
-    public MongoDbContext(IOptions<MongoDbSettings> configuration)
+    public MongoDbContext(IOptions<DatabaseSetting> configuration)
     {
         var mongoClient = new MongoClient(configuration.Value.ConnectionString);
-        _mongoDatabase = mongoClient.GetDatabase(configuration.Value.Database);
+        _mongoDatabase = mongoClient.GetDatabase(configuration.Value.DatabaseName);
     }
 
     public IMongoCollection<TEntity> GetCollection<TEntity>(string name)

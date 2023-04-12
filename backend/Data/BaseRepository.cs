@@ -1,17 +1,17 @@
-﻿namespace MealMaster.Infrastructure.Data;
+﻿namespace MealMaster.Data;
 
 public class BaseRepository<TEntity> where TEntity : class
 {
     protected readonly MongoDbContext _mongoContext;
     protected IMongoCollection<TEntity> _dbCollection;
 
-    protected BaseRepository(MongoDbContext context)
+    public BaseRepository(MongoDbContext context)
     {
         _mongoContext = context;
         _dbCollection = _mongoContext.GetCollection<TEntity>(typeof(TEntity).Name);
     }
 
-    public async Task Create(TEntity entity)
+    public async Task InsertAsync(TEntity entity)
     {
         if (entity == null)
         {
@@ -20,13 +20,13 @@ public class BaseRepository<TEntity> where TEntity : class
         await _dbCollection.InsertOneAsync(entity);
     }
 
-    public void Delete(string id)
+    public async Task DeleteAsync(string id)
     {
         var objectId = new ObjectId(id);
-        _dbCollection.DeleteOneAsync(Builders<TEntity>.Filter.Eq("_id", objectId));
+        await _dbCollection.DeleteOneAsync(Builders<TEntity>.Filter.Eq("_id", objectId));
     }
 
-    public TEntity Get(string id)
+    public TEntity GetAsync(string id)
     {
         var objectId = new ObjectId(id);
 
@@ -41,8 +41,8 @@ public class BaseRepository<TEntity> where TEntity : class
         return all.ToList();
     }
 
-    public virtual void Update(TEntity obj)
+    public async Task UpdateAsync(TEntity entity)
     {
-        _dbCollection.ReplaceOneAsync(Builders<TEntity>.Filter.Eq("_id", obj), obj);
+        await _dbCollection.ReplaceOneAsync(Builders<TEntity>.Filter.Eq("_id", entity), entity);
     }
 }
