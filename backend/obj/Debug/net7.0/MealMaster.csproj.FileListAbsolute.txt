@@ -1,7 +1,0 @@
-C:\Users\cihat\source\meal-master\backend\obj\Debug\net7.0\MealMaster.csproj.AssemblyReference.cache
-C:\Users\cihat\source\meal-master\backend\obj\Debug\net7.0\MealMaster.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\cihat\source\meal-master\backend\obj\Debug\net7.0\MealMaster.AssemblyInfoInputs.cache
-C:\Users\cihat\source\meal-master\backend\obj\Debug\net7.0\MealMaster.AssemblyInfo.cs
-C:\Users\cihat\source\meal-master\backend\obj\Debug\net7.0\MealMaster.csproj.CoreCompileInputs.cache
-C:\Users\cihat\source\meal-master\backend\obj\Debug\net7.0\MealMaster.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\cihat\source\meal-master\backend\obj\Debug\net7.0\MealMaster.MvcApplicationPartsAssemblyInfo.cache
