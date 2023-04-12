@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
+    "dotenv": "^16.0.3",
     "eslint": "8.37.0",
     "eslint-config-next": "13.3.0",
     "formik": "^2.2.9",
