@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cihat\\source\\meal-master\\backend\\MealMaster\\MealMaster.csproj": {}
+    "C:\\Users\\cihat\\source\\meal-master\\backend\\MealMaster.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cihat\\source\\meal-master\\backend\\MealMaster\\MealMaster.csproj": {
+    "C:\\Users\\cihat\\source\\meal-master\\backend\\MealMaster.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cihat\\source\\meal-master\\backend\\MealMaster\\MealMaster.csproj",
+        "projectUniqueName": "C:\\Users\\cihat\\source\\meal-master\\backend\\MealMaster.csproj",
         "projectName": "MealMaster",
-        "projectPath": "C:\\Users\\cihat\\source\\meal-master\\backend\\MealMaster\\MealMaster.csproj",
+        "projectPath": "C:\\Users\\cihat\\source\\meal-master\\backend\\MealMaster.csproj",
         "packagesPath": "C:\\Users\\cihat\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cihat\\source\\meal-master\\backend\\MealMaster\\obj\\",
+        "outputPath": "C:\\Users\\cihat\\source\\meal-master\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\cihat\\AppData\\Roaming\\NuGet\\NuGet.Config",
