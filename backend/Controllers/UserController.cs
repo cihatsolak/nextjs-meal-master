@@ -12,7 +12,7 @@ public class UserController : ControllerBase
     }
 
     [HttpGet("list")]
-    public async Task<IActionResult> GetUsers()
+    public IActionResult GetUsers()
     {
         var users = _repository.Get();
         if (!users.Any())
