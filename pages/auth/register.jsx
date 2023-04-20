@@ -8,18 +8,16 @@ import { toast } from "react-toastify";
 
 const Register = () => {
   const onSubmit = async (values, actions) => {
-
     try {
       const res = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/users/register`,
         values
       );
-      
-      if(res.status === 200) {
+
+      if (res.status === 200) {
         toast.success("user created successfully.");
       }
-    } 
-    catch (err) {
+    } catch (err) {
       toast.error(err.response.data.message);
       console.log(err);
     } finally {
@@ -96,7 +94,9 @@ const Register = () => {
           ))}
         </div>
         <div className="flex flex-col w-full gap-y-3 mt-6">
-          <button className="btn-primary" type="submit">REGISTER</button>
+          <button className="btn-primary" type="submit">
+            REGISTER
+          </button>
           <Link href="/auth/login">
             <span className="text-sm underline cursor-pointer text-secondary">
               Do you have a account?

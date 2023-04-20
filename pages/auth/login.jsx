@@ -11,8 +11,11 @@ const Login = () => {
   console.log(session);
 
   const onSubmit = async (values, actions) => {
-    await new Promise((resolve) => setTimeout(resolve, 4000));
-    actions.resetForm();
+    debugger;
+    const { email, password } = values;
+    let options = { redirect: false, email, password };
+    const res = await signIn("credentials", options);
+    debugger;
   };
 
   const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
