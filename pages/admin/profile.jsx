@@ -4,9 +4,27 @@ import Order from "../../components/profile/Order";
 import Products from "@/components/admin/Products";
 import Category from "@/components/admin/Category";
 import Footer from "@/components/admin/Footer";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 const Profile = () => {
   const [tabs, setTabs] = useState(0);
+
+  const { push } = useRouter();
+
+  const closeAdminAccount = async () => {
+    try {
+      if (confirm("Are you sure you want to close your Admin Account?")) {
+        const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/admin`);
+        if (res.status === 200) {
+          push("/admin");
+          toast.success("Admin account closed!");
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="flex px-10 min-h-[calc(100vh_-_433px)] lg:flex-row flex-col lg:mb-0 mb-10">
@@ -62,7 +80,7 @@ const Profile = () => {
             className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${
               tabs === 4 && "bg-primary text-white"
             }`}
-            onClick={() => setTabs(4)}
+            onClick={closeAdminAccount}
           >
             <i className="fa fa-sign-out"></i>
             <button className="ml-1">Exit</button>
@@ -75,6 +93,22 @@ const Profile = () => {
       {tabs === 3 && <Footer />}
     </div>
   );
+};
+
+export const getServerSideProps = (ctx) => {
+  const myCookie = ctx.req?.cookies || "";
+  if (myCookie.token !== process.env.ADMIN_TOKEN) {
+    return {
+      redirect: {
+        destination: "/admin",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 };
 
 export default Profile;

@@ -3,11 +3,28 @@ import Link from "next/link";
 import Input from "@/components/form/Input";
 import Title from "@/components/ui/Title";
 import { adminSchema } from "@/schema/admin/login-validation";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 const Login = () => {
+  const { push } = useRouter();
+
   const onSubmit = async (values, actions) => {
-    await new Promise((resolve) => setTimeout(resolve, 4000));
-    actions.resetForm();
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/admin`,
+        values
+      );
+      if (res.status === 200) {
+        toast.success("Admin login success!");
+        push("/admin/profile");
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      actions.resetForm();
+    }
   };
   const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
     useFormik({
@@ -68,6 +85,22 @@ const Login = () => {
       </form>
     </div>
   );
+};
+
+export const getServerSideProps = (ctx) => {
+  const myCookie = ctx.req?.cookies || "";
+  if (myCookie.token === process.env.ADMIN_TOKEN) {
+    return {
+      redirect: {
+        destination: "/admin/profile",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 };
 
 export default Login;
