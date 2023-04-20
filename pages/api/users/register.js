@@ -1,5 +1,6 @@
 import User from "@/models/User";
 import dbConnect from "@/util/dbConnect";
+import bcrypt from 'bcrypt';
 
 const handler = async (req, res) => {
   await dbConnect();
@@ -15,7 +16,7 @@ const handler = async (req, res) => {
     const newUser = await new User(body);
 
     // generate salt to has password
-    const salt = await bcrypt.generateSalt(10);
+    const salt = await bcrypt.genSalt(10);
 
     newUser.password = await bcrypt.hash(newUser.password, salt);
     newUser.confirmPassword = await bcrypt.hash(newUser.confirmPassword, salt);
