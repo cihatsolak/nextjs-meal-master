@@ -4,6 +4,7 @@ import Input from "@/components/form/Input";
 import Title from "@/components/ui/Title";
 import { registerSchema } from "@/schema/register-validation";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const onSubmit = async (values, actions) => {
@@ -14,16 +15,18 @@ const Register = () => {
         values
       );
       
-      console.log(res);
+      if(res.status === 200) {
+        toast.success("user created successfully.");
+      }
     } 
     catch (err) {
+      toast.error(err.response.data.message);
       console.log(err);
     } finally {
       actions.resetForm();
     }
-
-    await new Promise((resolve) => setTimeout(resolve, 4000));
   };
+
   const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
     useFormik({
       initialValues: {
