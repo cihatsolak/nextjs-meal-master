@@ -1,15 +1,17 @@
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import Account from "@/components/profile/Account";
-import Password from "@/components/profile/Password";
-import Order from "../order";
+import axios from "axios";
 import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 
-const Profile = () => {
+import { useEffect, useState } from "react";
+import Account from "../../components/profile/Account";
+import Order from "../../components/profile/Order";
+import Password from "../../components/profile/Password";
+
+const Profile = ({ user }) => {
+  const { data: session } = useSession();
   const [tabs, setTabs] = useState(0);
   const { push } = useRouter();
-  const { data: session } = useSession();
 
   const handleSignOut = () => {
     if (confirm("Are you sure you want to sign out?")) {
@@ -29,13 +31,13 @@ const Profile = () => {
       <div className="lg:w-80 w-100 flex-shrink-0">
         <div className="relative flex flex-col items-center px-10 py-5 border border-b-0">
           <Image
-            src="/images/client2.jpg"
+            src={user.image ? user.image : "/images/client2.jpg"}
             alt=""
             width={100}
             height={100}
             className="rounded-full"
           />
-          <b className="text-2xl mt-1">John Doe</b>
+          <b className="text-2xl mt-1">{user.fullName}</b>
         </div>
         <ul className="text-center font-semibold">
           <li
@@ -74,11 +76,23 @@ const Profile = () => {
           </li>
         </ul>
       </div>
-      {tabs === 0 && <Account />}
-      {tabs === 1 && <Password />}
+      {tabs === 0 && <Account user={user} />}
+      {tabs === 1 && <Password user={user} />}
       {tabs === 2 && <Order />}
     </div>
   );
 };
+
+export async function getServerSideProps({ req, params }) {
+  const user = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/users/${params.id}`
+  );
+
+  return {
+    props: {
+      user: user ? user.data : null,
+    },
+  };
+}
 
 export default Profile;

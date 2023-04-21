@@ -3,17 +3,21 @@ import dbConnect from "@/util/dbConnect";
 
 const handler = async (req, res) => {
   await dbConnect();
-
   const { method } = req;
 
   if (method === "GET") {
-    res.status(200).json({ message: "Hello World" });
+    try {
+      const users = await User.find();
+      res.status(200).json(users);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   if (method === "POST") {
     try {
-      const user = await User.create(req.body);
-      res.status(200).json(user);
+      const newUser = await User.create(req.body);
+      res.status(200).json(newUser);
     } catch (err) {
       console.log(err);
     }
