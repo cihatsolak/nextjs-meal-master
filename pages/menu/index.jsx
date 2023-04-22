@@ -11,10 +11,17 @@ const Index = ({ categoryList }) => {
 };
 
 export const getServerSideProps = async () => {
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/categories`);
+  const category = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/categories`
+  );
+  const product = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/products`
+  );
+
   return {
     props: {
-      categoryList: res.data ? res.data : [],
+      categoryList: category.data ? category.data : [],
+      productList: product.data ? product.data : [],
     },
   };
 };

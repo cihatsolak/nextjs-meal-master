@@ -6,12 +6,12 @@ import About from "@/components/About";
 import Reservation from "@/components/Reservation";
 import Customers from "@/components/customers/Customers";
 
-export default function Index({ categoryList }) {
+export default function Index({ categoryList, productList }) {
   return (
     <>
       <Carousel />
       <Campaigns />
-      <MenuWrapper categoryList={categoryList} />
+      <MenuWrapper categoryList={categoryList} productList={productList} />
       <About />
       <Reservation />
       <Customers />
