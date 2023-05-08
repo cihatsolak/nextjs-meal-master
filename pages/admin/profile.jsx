@@ -1,12 +1,14 @@
-import Image from "next/image";
-import { useState } from "react";
-import Order from "../../components/profile/Order";
-import Products from "@/components/admin/Products";
-import Category from "@/components/admin/Category";
-import Footer from "@/components/admin/Footer";
-import { useRouter } from "next/router";
 import axios from "axios";
-import AddProduct from "@/components/admin/AddProduct";
+import Image from "next/image";
+import { useRouter } from "next/router";
+
+import { useState } from "react";
+import Category from "../../components/admin/Category";
+import Footer from "../../components/admin/Footer";
+import Order from "../../components/admin/Order";
+import Products from "../../components/admin/Products";
+import { toast } from "react-toastify";
+import AddProduct from "../../components/admin/AddProduct";
 
 const Profile = () => {
   const [tabs, setTabs] = useState(0);
@@ -20,7 +22,7 @@ const Profile = () => {
         const res = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/admin`);
         if (res.status === 200) {
           push("/admin");
-          toast.success("Admin account closed!");
+          toast.success("Admin Account Closed!");
         }
       }
     } catch (err) {
@@ -52,7 +54,7 @@ const Profile = () => {
             <button className="ml-1 ">Products</button>
           </li>
           <li
-            className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${
+            className={`border border-t-0 w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${
               tabs === 1 && "bg-primary text-white"
             }`}
             onClick={() => setTabs(1)}
@@ -61,7 +63,7 @@ const Profile = () => {
             <button className="ml-1">Orders</button>
           </li>
           <li
-            className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${
+            className={`border border-t-0 w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${
               tabs === 2 && "bg-primary text-white"
             }`}
             onClick={() => setTabs(2)}
@@ -70,7 +72,7 @@ const Profile = () => {
             <button className="ml-1">Categories</button>
           </li>
           <li
-            className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${
+            className={`border border-t-0 w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${
               tabs === 3 && "bg-primary text-white"
             }`}
             onClick={() => setTabs(3)}
@@ -79,7 +81,7 @@ const Profile = () => {
             <button className="ml-1">Footer</button>
           </li>
           <li
-            className={`border w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${
+            className={`border border-t-0 w-full p-3 cursor-pointer hover:bg-primary hover:text-white transition-all ${
               tabs === 4 && "bg-primary text-white"
             }`}
             onClick={closeAdminAccount}

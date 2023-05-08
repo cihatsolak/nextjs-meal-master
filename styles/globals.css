@@ -14,15 +14,19 @@ body {
 }
 
 .btn-primary {
-  @apply text-white px-[30px] py-[8px] rounded-3xl bg-primary cursor-pointer hover:opacity-70 transition-all disabled:opacity-50 disabled:cursor-not-allowed;;
+  @apply text-white px-[30px] py-[8px] rounded-3xl bg-primary cursor-pointer hover:opacity-70 transition-all disabled:opacity-50 disabled:cursor-not-allowed;
 }
 
 .slick-dots {
   @apply !flex justify-start w-full;
 }
 
+.slick-dots li {
+  @apply !m-0;
+}
+
 .slick-dots .slick-active div {
-  @apply bg-primary;
+  @apply bg-primary scale-150;
 }
 
 .slick-dots div {
