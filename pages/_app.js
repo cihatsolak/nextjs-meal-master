@@ -1,19 +1,24 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../styles/globals.css";
-import Layout from "@/layout/Layout";
+
+import Layout from "../layout/Layout";
+import store from "../redux/store";
+import Router from "next/router";
+import NProgress from "nprogress";
+
 import { SessionProvider } from "next-auth/react";
-
-import { Provider } from "react-redux";
-import store from "@/redux/store";
-
 import { ToastContainer } from "react-toastify";
+import { Provider } from "react-redux";
+
+import "../styles/globals.css";
+import "nprogress/nprogress.css";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function App({
-  Component,
-  pageProps: { session, ...pageProps },
-}) {
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
+
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
       <Provider store={store}>
@@ -25,3 +30,5 @@ export default function App({
     </SessionProvider>
   );
 }
+
+export default MyApp;
